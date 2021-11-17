@@ -2,7 +2,6 @@ import 'package:big_bite/Screens/Login_screen.dart';
 import 'package:big_bite/Screens/SignUp_screen.dart';
 import 'package:big_bite/constants.dart';
 import 'package:flutter/material.dart';
-
 void main() {
   runApp(MyApp());
 }
@@ -40,56 +39,64 @@ class _MyHomePageState extends State<MyHomePage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            Container(
-                child: Image.asset(
-              'assets/welc.png',
-            )),
-            Container(
-                child: Image.asset(
-              'assets/burr.png',
-            )),
-            Container(
-                width: 250,
-                height: 65,
-                padding: EdgeInsets.all(3),
-                child: ClipRRect(
-                    borderRadius: BorderRadius.circular(29),
-                    child: FlatButton(
-                        padding:
-                            EdgeInsets.symmetric(vertical: 20, horizontal: 40),
-                        color: kprimeryLightColor,
-                        onPressed: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) {
-                                return LoginScreen();
+            Expanded(
+                child: ListView(
+                    shrinkWrap: true,
+                    scrollDirection: Axis.vertical,
+                    padding: const EdgeInsets.all(15),
+                    children: [
+                  Container(
+                      margin: EdgeInsets.only(top: 100),
+                      child: Image.asset(
+                        'assets/welc.png',
+                      )),
+                  Container(
+                      child: Image.asset(
+                    'assets/burr.png',
+                  )),
+                  Container(
+                      width: 250,
+                      height: 65,
+                      padding: EdgeInsets.all(3),
+                      child: ClipRRect(
+                          borderRadius: BorderRadius.circular(29),
+                          child: FlatButton(
+                              padding: EdgeInsets.symmetric(
+                                  vertical: 20, horizontal: 40),
+                              color: kprimeryLightColor,
+                              onPressed: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) {
+                                      return LoginScreen();
+                                    },
+                                  ),
+                                );
                               },
-                            ),
-                          );
-                        },
-                        child: Text('Log in')))),
-            Container(
-                width: 250,
-                height: 65,
-                padding: EdgeInsets.all(3),
-                child: ClipRRect(
-                    borderRadius: BorderRadius.circular(29),
-                    child: FlatButton(
-                        padding:
-                            EdgeInsets.symmetric(vertical: 20, horizontal: 40),
-                        color: kprimeryLightColor,
-                        onPressed: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) {
-                                return SignupScreen();
+                              child: Text('Log in')))),
+                  Container(
+                      width: 250,
+                      height: 65,
+                      padding: EdgeInsets.all(3),
+                      child: ClipRRect(
+                          borderRadius: BorderRadius.circular(29),
+                          child: FlatButton(
+                              padding: EdgeInsets.symmetric(
+                                  vertical: 20, horizontal: 40),
+                              color: kprimeryLightColor,
+                              onPressed: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) {
+                                      return SignupScreen();
+                                    },
+                                  ),
+                                );
                               },
-                            ),
-                          );
-                        },
-                        child: Text('Sign up'))))
+                              child: Text('Sign up'))))
+                ]))
           ],
         ),
       ),
