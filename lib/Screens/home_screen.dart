@@ -1,9 +1,12 @@
 import 'dart:ui';
 
+import 'package:big_bite/Screens/categories_screen.dart';
 import 'package:big_bite/constants.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:carousel_pro/carousel_pro.dart';
+
+import 'mybasket_screen.dart';
 
 class HomeScreen extends StatelessWidget {
   // This widget is the root of your application.
@@ -58,7 +61,18 @@ class HomeScreen extends StatelessWidget {
                   Stack(children: <Widget>[
                     Material(
                       child: InkWell(
-                        onTap: () {},
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) {
+                                return categoriesScreen();
+                              },
+                            ),
+                          );
+                          print("Container clicked");
+
+                        },
                         child: Container(
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(29),
@@ -66,6 +80,7 @@ class HomeScreen extends StatelessWidget {
                             width: 400,
                             height: 100,
                             child: ClipRRect(
+
                               child: Image.asset(
                                 'assets/cat.jpg',
                                 fit: BoxFit.cover,
@@ -82,7 +97,14 @@ class HomeScreen extends StatelessWidget {
                                 fontStyle: FontStyle.italic)))
                   ]),
                   GestureDetector(
-                    onTap: (){
+                    onTap: (){Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) {
+                          return MybasketScreen();
+                        },
+                      ),
+                    );
                       print("Container clicked");
                     },
                     child: Stack(children: [
