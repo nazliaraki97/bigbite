@@ -79,6 +79,14 @@
                     <span class="menu-title">Rating</span>
                 </a>
             </li>
+            <li class="nav-item menu-items">
+                <a class="nav-link" href="{{url('/showcart')}}">
+              <span class="menu-icon">
+                <i class="mdi mdi-chart-bar"></i>
+              </span>
+                    <span class="menu-title">Sepet</span>
+                </a>
+            </li>
 
         </ul>
     </nav>

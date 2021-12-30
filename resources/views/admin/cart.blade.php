@@ -14,22 +14,17 @@
             <table bgcolor="black">
                 <tr>
                     <th style="padding: 30px">Customer ID</th>
-                    <th style="padding: 30px">Menu ID</th>
+                    <th style="padding: 30px">Foods</th>
                     <th style="padding: 30px">Quantity</th>
                     <th style="padding: 30px">Total Amount</th>
-                    <th style="padding: 30px">Order Status</th>
-                    <th style="padding: 30px">Action</th>
-
                 </tr>
 
                 @foreach($data as $data)
                     <tr align="center">
-                        <td>{{$data->customer_id}}</td>
+                        <td>{{$data->id}}</td>
                         <td>{{$data->menu_id}}</td>
                         <td>{{$data->quantity}}</td>
                         <td>{{$data->totalAmount}}</td>
-                        <td>{{$data->orderStatus}}</td>
-                        <td><a href="{{url('/deleteorder',$data->id)}}">Delete</a></td>
                     </tr>
                 @endforeach
 

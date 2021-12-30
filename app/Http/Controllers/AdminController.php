@@ -9,6 +9,7 @@ use App\Models\bigbitemenu;
 use App\Models\Customer;
 use App\Models\Order;
 use App\Models\Rating;
+use App\Models\Cart;
 
 class AdminController extends Controller
 {
@@ -86,5 +87,9 @@ class AdminController extends Controller
         return redirect()->back();
     }
 
-
+    public function showcart()
+    {
+        $data=order::all();
+        return view("admin.cart",compact("data"));
+    }
 }

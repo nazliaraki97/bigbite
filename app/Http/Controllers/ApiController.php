@@ -82,4 +82,10 @@ class ApiController extends Controller
         $bigbitemenus = bigbitemenu::all();
         return response()->json($bigbitemenus);
     }
+
+    public function orders()
+    {
+        $orders = order::all();
+        return response()->json($orders);
+    }
 }

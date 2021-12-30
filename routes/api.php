@@ -24,6 +24,7 @@ Route::post('/login', [\App\Http\Controllers\ApiController::class, 'login']);
 Route::get('/categories', [\App\Http\Controllers\ApiController::class, 'categories']);
 Route::get('/getregister', [\App\Http\Controllers\ApiController::class, 'getregister']);
 Route::get('/getfood', [\App\Http\Controllers\ApiController::class, 'getfood']);
+Route::get('/orders', [\App\Http\Controllers\ApiController::class, 'orders']);
 
 
 
