@@ -11,6 +11,8 @@ use App\Models\Customer;
 use App\Models\Order;
 use App\Models\Rating;
 use Illuminate\Support\Facades\Crypt;
+use Carbon\Carbon;
+
 class ApiController extends Controller
 {
     public function admin(Request $request)
@@ -41,7 +43,9 @@ class ApiController extends Controller
         $customers->lastName=$request->post('lastName');
         $customers->email=$request->post('email');
         $customers->phoneNumber=$request->post('phoneNumber');
-        $customers->password=$request->post('password');
+        $customers->password= $request->post('password') ;
+    //    $customers->password=encrypt($request->post('password'));
+
         if($customers->save())
         {
             return response()->json(['succes'=>true
@@ -56,10 +60,18 @@ class ApiController extends Controller
     }
     public function login(Request $request)
     {
-        $user = Customer::where('email',$request->email)->where('password',$request->password)->get();
+        // dd(  $request->post('password')  ) ;
+       // $password_decypted = decrypt($request->post('password'))  ;
+        // dd($password_decypted) ;
+       // dd( Crypt::encrypt($request->post('password')) ) ;
+       // dd( Crypt::decryptString('eyJpdiI6IjNVMWo4TTRlZlQ0aWN6aWlESW1GckE9PSIsInZhbHVlIjoiYjBraU84dnlBY2swT0d2eHp0OHc1Zz09IiwibWFjIjoiZDg3MmEwZTZmZjk2MWIwYTY2NWExN2JmZTFlZTE4ZDQyNGQ3Yzc4MjhiYmM5ZTdkZDhjNWVlOTNmOWMzZDAxNCIsInRhZyI6IiJ9') ) ;
+        $user = Customer::where('email',$request->email)
+            ->where('password',  $request->post('password') )
+            ->get();
+        // dd($password_decypted , $user->password) ;
         if(count($user))
         {
-            return response()->json(['status'=>true,'user' => $user]);
+            return response()->json(['status'=>true,'user' => $user[0]]);
 
         }else{
             return response()->json(['status'=>false ]);
@@ -108,15 +120,37 @@ class ApiController extends Controller
 
     public function orderdetails(Request $request)
     {
-        $orderdet = new Order_detail();
-        $orderdet->order_id = $request->post('orderid');
-        $orderdet->menu_id = $request->post('menuid');
-        $orderdet->amount = $request->post('amount');
-        $orderdet->quantity = $request->post('quantity');
-        $orderdet->totalAmount=($request->amount)*($request->quantity);
-        $orderdet->no_of_serving=$request->no_of_serving;
-        if ($orderdet->save()) {
-            return response()->json(['succes' => true
+        $order = new Order();
+        $order->customer_id = $request->post('customerid');
+        $order->orderDate = Carbon::now() ;
+        $order->orderStatus = 1 ;
+
+        $amount=0;
+        $order->amount = $amount;
+        $order->save();
+
+        $orderdetails = $request->post('orderdetails');
+
+        foreach ($orderdetails as $orderdetail){
+            $orderdet = new Order_detail();
+            $orderdet->order_id = $order->id;
+            $orderdet->menu_id = $orderdetail['menu_id'] ;
+            $orderdet->amount =  $orderdetail['amount'] ;
+            $orderdet->quantity =  $orderdetail['quantity'] ;
+            $orderdet->totalAmount=($orderdet->amount)*($orderdet->quantity);
+            $orderdet->no_of_serving=$orderdetail['no_of_serving'];
+            $amount += $orderdet->totalAmount ;
+            $orderdet->save();
+        }
+
+        $order->amount = $amount;
+        $order->save();
+
+        if ($order->save()) {
+            return response()->json([
+                'succes' => true,
+
+
             ]);
 
         } else {
