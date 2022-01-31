@@ -19,11 +19,15 @@ Route::get('/', function () {
 });
 Route::get('/home',[\App\Http\Controllers\HomeController::class, "index"]);
 Route::get('/orders',[\App\Http\Controllers\AdminController::class, "order"]);
+Route::get('/userorders',[\App\Http\Controllers\UserController::class, "userorders"]);
+Route::get('/userrating',[\App\Http\Controllers\UserController::class, "userrating"]);
+Route::get('/cart',[\App\Http\Controllers\UserController::class, "usercart"]);
 Route::get('/rating',[\App\Http\Controllers\AdminController::class, "rating"]);
+Route::get('/order-details',[\App\Http\Controllers\AdminController::class, "orderdetails"]);
 Route::get('/redirects',[\App\Http\Controllers\HomeController::class, "redirects"]);
 Route::get('/users',[\App\Http\Controllers\AdminController::class, "user"]);
-Route::post('/addcart',[\App\Http\Controllers\AdminController::class, "addcart"]);
-Route::get('/showcart',[\App\Http\Controllers\AdminController::class, "showcart"]);
+Route::post('/addcart',[\App\Http\Controllers\UserController::class, "addcart"]);
+Route::get('/showcart',[\App\Http\Controllers\UserController::class, "showcart"]);
 Route::get('/customers',[\App\Http\Controllers\AdminController::class, "customer"]);
 Route::get('/deletemenu/{id}',[\App\Http\Controllers\AdminController::class, "deletemenu"]);
 Route::get('/deleteorder/{id}',[\App\Http\Controllers\AdminController::class, "deleteorder"]);

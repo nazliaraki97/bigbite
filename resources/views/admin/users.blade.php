@@ -20,7 +20,7 @@
             <tr align="center">
                 <td>{{$data->name}}</td>
                 <td>{{$data->email}}</td>
-                @if($data->usertype=="1")
+                @if($data->usertype=="0")
                 <td><a href="{{url('/deleteuser',$data->id)}}">Delete</a></td>
 
                     @else

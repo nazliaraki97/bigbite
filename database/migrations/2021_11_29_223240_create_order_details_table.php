@@ -15,9 +15,11 @@ class CreateOrderDetailsTable extends Migration
     {
         Schema::create('order_details', function (Blueprint $table) {
             $table->id();
-            $table->integer('amount');
             $table->unsignedBigInteger('order_id');
             $table->unsignedBigInteger('menu_id');
+            $table->integer('amount');
+            $table->integer('quantity');
+            $table->integer('totalAmount');
             $table->string('no_of_serving');
             $table->foreign('order_id')->references('id')->on('orders');
             $table->foreign('menu_id')->references('id')->on('bigbitemenus');

@@ -60,7 +60,7 @@
               <span class="menu-icon">
                 <i class="mdi mdi-table-large"></i>
               </span>
-                    <span class="menu-title">Kunden</span>
+                    <span class="menu-title">Customers</span>
                 </a>
             </li>
             <li class="nav-item menu-items">
@@ -68,7 +68,7 @@
               <span class="menu-icon">
                 <i class="mdi mdi-chart-bar"></i>
               </span>
-                    <span class="menu-title">Bestellungen</span>
+                    <span class="menu-title">Orders</span>
                 </a>
             </li>
             <li class="nav-item menu-items">
@@ -80,11 +80,11 @@
                 </a>
             </li>
             <li class="nav-item menu-items">
-                <a class="nav-link" href="{{url('/showcart')}}">
+                <a class="nav-link" href="{{url('/order-details')}}">
               <span class="menu-icon">
                 <i class="mdi mdi-chart-bar"></i>
               </span>
-                    <span class="menu-title">Sepet</span>
+                    <span class="menu-title">Order-Details</span>
                 </a>
             </li>
 

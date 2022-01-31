@@ -14,7 +14,6 @@
                 <th style="padding: 30px">First Name</th>
                 <th style="padding: 30px">Last Name</th>
                 <th style="padding: 30px">E-Mail</th>
-                <th style="padding: 30px">password</th>
                 <th style="padding: 30px">Phone Number</th>
                 <th style="padding: 30px">Action</th>
             </tr>
@@ -24,7 +23,6 @@
                     <td>{{$data->firstName}}</td>
                     <td>{{$data->lastName}}</td>
                     <td>{{$data->email}}</td>
-                    <td>{{$data->password}}</td>
                     <td>{{$data->phoneNumber}}</td>
                     <td><a href="{{url('/deletecustomer',$data->id)}}">Delete</a></td>
 
