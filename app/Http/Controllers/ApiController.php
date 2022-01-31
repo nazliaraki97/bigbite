@@ -106,10 +106,24 @@ class ApiController extends Controller
         }
     }
 
-    public function orderdetails()
+    public function orderdetails(Request $request)
     {
-        $orderdetails = Order_detail::all();
-        return response()->json($orderdetails);
+        $orderdet = new Order_detail();
+        $orderdet->order_id = $request->post('orderid');
+        $orderdet->menu_id = $request->post('menuid');
+        $orderdet->amount = $request->post('amount');
+        $orderdet->quantity = $request->post('quantity');
+        $orderdet->totalAmount=($request->amount)*($request->quantity);
+        $orderdet->no_of_serving=$request->no_of_serving;
+        if ($orderdet->save()) {
+            return response()->json(['succes' => true
+            ]);
+
+        } else {
+            return response()->json([
+                'succes' => false
+            ]);
+        }
     }
 
 }

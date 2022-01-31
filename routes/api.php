@@ -26,7 +26,7 @@ Route::get('/getregister', [\App\Http\Controllers\ApiController::class, 'getregi
 Route::get('/getfood', [\App\Http\Controllers\ApiController::class, 'getfood']);
 Route::get('/orders', [\App\Http\Controllers\ApiController::class, 'orders']);
 Route::post('/postorder', [\App\Http\Controllers\ApiController::class, 'postorder']);
-Route::get('/order-details',[\App\Http\Controllers\ApiController::class, 'orderdetails']);
+Route::post('/orderdetails',[\App\Http\Controllers\ApiController::class, 'orderdetails']);
 
 
 
