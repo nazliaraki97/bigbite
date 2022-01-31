@@ -41,7 +41,7 @@ class ApiController extends Controller
         $customers->lastName=$request->post('lastName');
         $customers->email=$request->post('email');
         $customers->phoneNumber=$request->post('phoneNumber');
-        $customers->password=Crypt::encryptString($request->post('password'));
+        $customers->password=$request->post('password');
         if($customers->save())
         {
             return response()->json(['succes'=>true
